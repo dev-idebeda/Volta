@@ -1,0 +1,9 @@
+C:\Users\ang\Videos\WindowsFormsApplication1\WindowsFormsApplication1\bin\Release\idebedaOnae.exe
+C:\Users\ang\Videos\WindowsFormsApplication1\WindowsFormsApplication1\bin\Release\idebedaOnae.pdb
+C:\Users\ang\Videos\WindowsFormsApplication1\WindowsFormsApplication1\obj\x86\Release\ResolveAssemblyReference.cache
+C:\Users\ang\Videos\WindowsFormsApplication1\WindowsFormsApplication1\obj\x86\Release\WindowsFormsApplication1.Form1.resources
+C:\Users\ang\Videos\WindowsFormsApplication1\WindowsFormsApplication1\obj\x86\Release\idebedaOnae.Properties.Resources.resources
+C:\Users\ang\Videos\WindowsFormsApplication1\WindowsFormsApplication1\obj\x86\Release\GenerateResource.read.1.tlog
+C:\Users\ang\Videos\WindowsFormsApplication1\WindowsFormsApplication1\obj\x86\Release\GenerateResource.write.1.tlog
+C:\Users\ang\Videos\WindowsFormsApplication1\WindowsFormsApplication1\obj\x86\Release\idebedaOnae.exe
+C:\Users\ang\Videos\WindowsFormsApplication1\WindowsFormsApplication1\obj\x86\Release\idebedaOnae.pdb
