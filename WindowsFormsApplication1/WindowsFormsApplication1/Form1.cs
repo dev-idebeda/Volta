@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,7 +15,7 @@ namespace WindowsFormsApplication1
     public partial class Form1 : Form
     {
 
-        string  a = "awal ngecas";
+        string  a = "awal ngecas";  //flag
         public Form1()
         {
             InitializeComponent();
@@ -23,55 +23,55 @@ namespace WindowsFormsApplication1
 
         }
         
-        PowerStatus status = SystemInformation.PowerStatus;
+        PowerStatus status = SystemInformation.PowerStatus;  //melihat persentase baterai
         private void timer1_Tick(object sender, EventArgs e)
         {
             
             ManagementObjectSearcher mos = new ManagementObjectSearcher("select * from Win32_Battery where Name='" + lblBatteryName.Text + "'");
             foreach (ManagementObject mo in mos.Get())
             {
-                PowerStatus status = SystemInformation.PowerStatus;
+                PowerStatus status = SystemInformation.PowerStatus; //memperlihatkan persentase
                 BatteryIndicator.Value = (int)(status.BatteryLifePercent * 100);
                 ChargeRemaining.Text = String.Format("{0}%", (status.BatteryLifePercent * 100));
 
                 float b = status.BatteryLifePercent*100;
                 //MessageBox.Show(a);
 
-                if (a == "awal ngecas")
+                if (a == "awal ngecas") //cek flag, apakah a nilainya "awal ngecas" ?
                 {
 
-                    if (b <= 98)
+                    if (b <= 98) //persentase baterai kurang dari 98% ? bisa diganti 100%
                     {
                         Process firstProc = new Process();
-                        firstProc.StartInfo.FileName = "onae commandline.exe";
+                        firstProc.StartInfo.FileName = "onae commandline.exe"; //panggil program onae 
                         firstProc.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-                        firstProc.StartInfo.Arguments = "on 0";
+                        firstProc.StartInfo.Arguments = "on 0"; // charger on di port nomor 0
                         firstProc.EnableRaisingEvents = true;
                         firstProc.Start();
 
-                        if (b == 98) {
+                        if (b == 98) { //apakah sudah penuh 98% ? bisa diganti 100%
 
-                            a = "selesai ngecas";
+                            a = "selesai ngecas"; //ganti flag menjadi "selesai ngecas"
                         }
                     }
                     
                 }
-                else if(a == "selesai ngecas"){
+                else if(a == "selesai ngecas"){ //bila flag menyatakan selesai ngecas
                     Process firstProc = new Process();
                     firstProc.StartInfo.FileName = "onae commandline.exe";
                     firstProc.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-                    firstProc.StartInfo.Arguments = "off 0";
+                    firstProc.StartInfo.Arguments = "off 0"; //charger off
                     firstProc.EnableRaisingEvents = true;
                     firstProc.Start();
 
-                    if (b > 30)
+                    if (b > 30) //bila baterai masih di atas 30%, do nothing/charger tetap off
                     {
 
 
                     }
                     else {
 
-                        a = "awal ngecas";
+                        a = "awal ngecas"; //bila di bawah 30%, maka charger on kembali
                     }
                                     
                 }
@@ -107,10 +107,13 @@ namespace WindowsFormsApplication1
             //    default:
             //         break;
             // }
-            Process firstProc = new Process();
+
+            //=======================================================================
+            //ketika program mau ditutup, matikan semua port 
+            Process firstProc = new Process(); 
             firstProc.StartInfo.FileName = "onae commandline.exe";
             firstProc.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-            firstProc.StartInfo.Arguments = "off 0";
+            firstProc.StartInfo.Arguments = "off 0"; //matikan port 0
             firstProc.EnableRaisingEvents = true;
 
             firstProc.Start();
@@ -119,7 +122,7 @@ namespace WindowsFormsApplication1
             Process secondProc = new Process();
             secondProc.StartInfo.FileName = "onae commandline.exe";
             secondProc.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-            secondProc.StartInfo.Arguments = "off 1";
+            secondProc.StartInfo.Arguments = "off 1"; //matikan port 1
             secondProc.EnableRaisingEvents = true;
 
             secondProc.Start();
@@ -128,7 +131,7 @@ namespace WindowsFormsApplication1
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e) //tombol manual on
         {
             Process firstProc = new Process();
             firstProc.StartInfo.FileName = "onae commandline.exe";
@@ -140,7 +143,7 @@ namespace WindowsFormsApplication1
             //firstProc.WaitForExit();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e) //tombol manual off
         {
             Process firstProc = new Process();
             firstProc.StartInfo.FileName = "onae commandline.exe";
@@ -152,7 +155,7 @@ namespace WindowsFormsApplication1
             //firstProc.WaitForExit();
         }
 
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) //link di about
         {
             // Specify that the link was visited. 
             this.linkLabel1.LinkVisited = true;
